@@ -5,7 +5,7 @@ import aiosqlite
 
 
 AVAILABLE_POINTS = [
-    "1", "2", "3", "5", "8",
+    "0.5", "1", "2", "3", "5", "8",
     "13", "20", "40", "❔", "☕",
 ]
 HALF_POINTS = len(AVAILABLE_POINTS) // 2
@@ -42,9 +42,7 @@ class Vote:
 class Game:
 
     OP_RESTART = "restart"
-    OP_RESTART_NEW = "restart-new"
     OP_REVEAL = "reveal"
-    OP_REVEAL_NEW = "reveal-new"
 
     def __init__(self, chat_id, vote_id, initiator, text):
         self.chat_id = chat_id
@@ -96,22 +94,12 @@ class Game:
                         "text": "Restart",
                         "callback_data": "{}-click-{}".format(self.OP_RESTART, self.vote_id),
                     },
-                    {
-                        "type": "InlineKeyboardButton",
-                        "text": "Restart 🆕",
-                        "callback_data": "{}-click-{}".format(self.OP_RESTART_NEW, self.vote_id),
-                    },
                 ],
                 [
                     {
                         "type": "InlineKeyboardButton",
                         "text": "Open Cards",
                         "callback_data": "{}-click-{}".format(self.OP_REVEAL, self.vote_id),
-                    },
-                    {
-                        "type": "InlineKeyboardButton",
-                        "text": "Open Cards 🆕",
-                        "callback_data": "{}-click-{}".format(self.OP_REVEAL_NEW, self.vote_id),
                     },
                 ],
             ],
