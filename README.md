@@ -2,7 +2,7 @@
 This bot allows to play Planning Poker game in group chat.
 
 # Usage
-Add https://t.me/planning_poker_with_bot to group chat. Also you can launch your own instance, see `Self-hosted usage` bellow
+Add https://t.me/open_planning_poker_bot to group chat. Also you can launch your own instance, see `Self-hosted usage` bellow
 
 To start game use:
 ```
@@ -18,7 +18,7 @@ across multiple lines
 
 Only initiator can open cards or restart game at any moment. 
 
-Currently there is only one scale: 1, 2, 3, 5, 8, 13, 20, 40, ❔, ☕
+Currently there is only one scale: 0.5, 1, 2, 3, 5, 8, 13, 20, 40, ❔, ☕
 
 # Self-hosted usage
 Bot works with Python 3.6. There is `Dockerfile` and `run.sh` script for convenience
