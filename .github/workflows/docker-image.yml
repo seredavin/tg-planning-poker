@@ -26,3 +26,17 @@ jobs:
       
     - name: Push to docker hub
       run: docker push $IMAGE_NAME
+
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
+      env:
+        PP_BOT_TOKEN: ${{ secrets.PP_BOT_TOKEN }}
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PK }}
+        port: 22
+        envs: IMAGE_NAME,PP_BOT_TOKEN
+        script: |
+          docker run --name ${IMAGE_NAME} -d --restart=unless-stopped -e PP_BOT_TOKEN=${PP_BOT_TOKEN} -e PP_BOT_DB_PATH=/db/tg_pp_bot.db -v ~/.ppbot/:/db/ ppbot
+
