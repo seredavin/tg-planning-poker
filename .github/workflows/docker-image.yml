@@ -38,5 +38,5 @@ jobs:
         port: 22
         envs: IMAGE_NAME,PP_BOT_TOKEN
         script: |
-          docker run --name ppbot -d --restart=unless-stopped -e PP_BOT_TOKEN=${PP_BOT_TOKEN} -e PP_BOT_DB_PATH=/db/tg_pp_bot.db -v ~/.ppbot/:/db/ ${IMAGE_NAME}
+          docker run --name ppbot -d --rm --restart=unless-stopped -e PP_BOT_TOKEN=${PP_BOT_TOKEN} -e PP_BOT_DB_PATH=/db/tg_pp_bot.db -v ~/.ppbot/:/db/ ${IMAGE_NAME}
 
