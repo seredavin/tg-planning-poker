@@ -10,14 +10,13 @@ from ppbot.game import GameRegistry, Game
 TOKEN = os.environ["PP_BOT_TOKEN"]
 DB_PATH = os.environ.get("PP_BOT_DB_PATH", os.path.expanduser("~/.tg_pp_bot.db"))
 GREETING = """
-Use 
-/poker task url or description 
-to start game.
+Напишите:
+/poker <URL задачи или уу описание> 
+для начала голосования.
 
-Multiline is also supported
+Многострочные сообщения тоже поддерживаются
 /poker line1
 line2
-Currently there is only one scale: 0.5, 1, 2, 3, 5, 8, 13, 20, 40, ❔, ☕
 """
 
 bot = Bot(TOKEN)
