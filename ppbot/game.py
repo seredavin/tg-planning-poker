@@ -57,7 +57,7 @@ class Game:
         self.votes[self._initiator_str(initiator)].set(point)
 
     def get_text(self):
-        result = "{} :\n{}\nИнициатор: {}".format(
+        result = "{}:\n{}\nИнициатор: {}".format(
             "Голосование за" if not self.revealed else "Результаты по",
             self.text, self._initiator_str(self.initiator)
         )
