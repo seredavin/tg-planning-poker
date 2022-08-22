@@ -6,10 +6,10 @@ import aiosqlite
 
 AVAILABLE_POINTS = [
     "0.5", "1", "2", "3", "5", "8",
-    "13", "20", "40", "❔", "🥃",
+    "13", "20", "40", "❓", "🥃",
 ]
 HALF_POINTS = len(AVAILABLE_POINTS) // 2
-ALL_MARKS = "🤞🤙🖖👌"
+ALL_MARKS = "♠🫳♦🚮♣🤌♥🚫🤞♻🤙🕶🖖💣🖕👌"
 
 
 class Vote:
@@ -57,8 +57,8 @@ class Game:
         self.votes[self._initiator_str(initiator)].set(point)
 
     def get_text(self):
-        result = "{} for:\n{}\nInitiator: {}".format(
-            "Vote" if not self.revealed else "Results",
+        result = "{} :\n{}\nИнициатор: {}".format(
+            "Голосование за" if not self.revealed else "Результаты по",
             self.text, self._initiator_str(self.initiator)
         )
         if self.votes:
@@ -68,7 +68,7 @@ class Game:
                 )
                 for user_id, vote in sorted(self.votes.items())
             )
-            result += "\n\nCurrent votes:\n{}".format(votes_str)
+            result += "\n\nТекущие голоса:\n{}".format(votes_str)
         return result
 
     def get_send_kwargs(self):
@@ -91,14 +91,14 @@ class Game:
                 [
                     {
                         "type": "InlineKeyboardButton",
-                        "text": "Restart",
+                        "text": "Переиграть",
                         "callback_data": "{}-click-{}".format(self.OP_RESTART, self.vote_id),
                     },
                 ],
                 [
                     {
                         "type": "InlineKeyboardButton",
-                        "text": "Open Cards",
+                        "text": "Открыть карты",
                         "callback_data": "{}-click-{}".format(self.OP_REVEAL, self.vote_id),
                     },
                 ],
